@@ -49,8 +49,8 @@ document.querySelector('.check').addEventListener('click', function () {
     }
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
-    // displayMessage('🎉 Correct Number!');
-    displayMessage('🎉 I love you Shakhsanem💖!');
+    displayMessage('🎉 Correct Number!');
+    // displayMessage('🎉 I love you Shakhsanem💖!');
     document.querySelector('.number').textContent = secretNumber;
   } else if (guess !== secretNumber) {
     // when guess is wrong
@@ -69,7 +69,7 @@ document.querySelector('.check').addEventListener('click', function () {
 document.querySelector('.again').addEventListener('click', function () {
   secretNumber = Math.trunc(Math.random() * 100 + 1); // changing random number to avoid some bugs in the code
   score = 20;
-  document.querySelector('.score').textContent = 20; // resetting the value of score to initial one
+  document.querySelector('.score').textContent = score; // resetting the value of score to initial one
   document.querySelector('.number').textContent = '?'; // seting up secret box unknown, to its initial value
   document.querySelector('body').style.backgroundColor = '#222'; // setting up bg color of body to initial stage
   document.querySelector('.number').style.width = '15rem';

@@ -48,22 +48,14 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.number').style.width = '30rem';
     document.querySelector('.message').textContent = '🎉 Correct Number!';
     document.querySelector('.number').textContent = secretNumber;
-  } else if (guess > secretNumber) {
-    // when the guess number is to high
+  } else if (guess !== secretNumber) {
+    // when guess is wrong
     if (score > 1) {
+      // when the guess number is to high
+      document.querySelector('.message').textContent =
+        guess > secretNumber ? '📈 Too High!' : '📉 Too Low';
       score--;
       document.querySelector('.score').textContent = score;
-      document.querySelector('.message').textContent = '📈 Too High!';
-    } else {
-      document.querySelector('.message').textContent = '💥 You lost the game!';
-      document.querySelector('.score').textContent = 0;
-    }
-  } else if (guess < secretNumber) {
-    // when the guess number is to low
-    if (score > 1) {
-      score--;
-      document.querySelector('.score').textContent = score;
-      document.querySelector('.message').textContent = '📉 Too Low';
     } else {
       document.querySelector('.message').textContent = '💥 You lost the game!';
       document.querySelector('.score').textContent = 0;
@@ -73,6 +65,7 @@ document.querySelector('.check').addEventListener('click', function () {
 
 document.querySelector('.again').addEventListener('click', function () {
   secretNumber = Math.trunc(Math.random() * 100 + 1); // changing random number to avoid some bugs in the code
+  score = 20;
   document.querySelector('.score').textContent = 20; // resetting the value of score to initial one
   document.querySelector('.number').textContent = '?'; // seting up secret box unknown, to its initial value
   document.querySelector('body').style.backgroundColor = '#222'; // setting up bg color of body to initial stage

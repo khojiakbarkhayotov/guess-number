@@ -26,8 +26,11 @@ let highestScore = 0;
 // }
 console.log(secretNumber);
 
+const displayMessage = function (message) {
+  document.querySelector('.message').textContent = message;
+};
+
 let score = Number(document.querySelector('.score').textContent);
-console.log(score, typeof score);
 
 document.querySelector('.check').addEventListener('click', function () {
   // takes two paramenters, that is type of event and the event handler function
@@ -37,7 +40,7 @@ document.querySelector('.check').addEventListener('click', function () {
     console.warn(
       'There is nothing to print out, please enter the value for guess!'
     );
-    document.querySelector('.message').textContent = '⛔ No Number!';
+    displayMessage('⛔ No Number!');
   } else if (guess === secretNumber) {
     // when player wins.
     if (score > highestScore) {
@@ -46,18 +49,18 @@ document.querySelector('.check').addEventListener('click', function () {
     }
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
-    document.querySelector('.message').textContent = '🎉 Correct Number!';
+    // displayMessage('🎉 Correct Number!');
+    displayMessage('🎉 I love you Shakhsanem💖!');
     document.querySelector('.number').textContent = secretNumber;
   } else if (guess !== secretNumber) {
     // when guess is wrong
     if (score > 1) {
       // when the guess number is to high
-      document.querySelector('.message').textContent =
-        guess > secretNumber ? '📈 Too High!' : '📉 Too Low';
+      displayMessage(guess > secretNumber ? '📈 Too High!' : '📉 Too Low');
       score--;
       document.querySelector('.score').textContent = score;
     } else {
-      document.querySelector('.message').textContent = '💥 You lost the game!';
+      displayMessage('💥 You lost the game!');
       document.querySelector('.score').textContent = 0;
     }
   }
@@ -70,6 +73,7 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('.number').textContent = '?'; // seting up secret box unknown, to its initial value
   document.querySelector('body').style.backgroundColor = '#222'; // setting up bg color of body to initial stage
   document.querySelector('.number').style.width = '15rem';
-  document.querySelector('.message').textContent = '🤔 Start guessing ... ';
+  displayMessage('🤔 Start guessing ... ');
   document.querySelector('.guess').value = '';
+  console.log(secretNumber);
 });
